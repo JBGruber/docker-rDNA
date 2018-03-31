@@ -39,10 +39,6 @@ RUN installGithub.r igraph/rigraph \
     leifeld/dna/rDNA \
     && rm -rf /tmp/downloaded_packages/
     
-# Download DNA.jar
-RUN Rscript -e \
-    "download.file('https://github.com/leifeld/dna/raw/master/manual/dna-2.0-beta20.jar', destfile = '/home/rstudio/dna-2.0-beta20.jar', mode = 'wb')"
-    
 # Copy demo script
 COPY rDNA_demo.R /home/rstudio/
 
