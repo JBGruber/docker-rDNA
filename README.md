@@ -10,7 +10,7 @@ correctly.
 2. Run:
 
 ```bash
-sudo docker run -d -p 8787:8787 jbgruber/rdna
+sudo docker run -d -p 8787:8787 -e PASSWORD=yourpasswordhere jbgruber/rdna
 ```
 
 3. Visit `localhost:8787` in your browser and log in with username:password 
@@ -24,26 +24,3 @@ Note: Get more information about the underlying docker image of RStudio and
 common configuration options at
 [github.com/rocker-org](https://github.com/rocker-org/rocker-versioned/tree/master/rstudio) or 
 <https://github.com/rocker-org/rocker/wiki>.
-
-### AWT Error
-
-The current beta of DNA can not run on headless machines and exits with the 
-error:
-
-
-```
-Error in .jnew("dna.export/Exporter", "sqlite", infile, "", "", verbose) : 
-  java.awt.AWTError: Can't connect to X11 window server using ':0' as the value of the DISPLAY variable.
-```
-
-You can prevent this by linking the host's screen to the virtual framebuffer
-running inside the virtual machine:
-
-```bash
-docker run -d \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v /etc/localtime:/etc/localtime \
-    -e DISPLAY=unix$DISPLAY \
-    -p 8787:8787 \
-    rdna
-```

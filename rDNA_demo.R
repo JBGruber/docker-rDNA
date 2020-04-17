@@ -12,7 +12,7 @@ dna_downloadJar()
 #
 dna_init()
 
-#
+# do not run in headless environment like docker
 #dna_gui(dna_sample())
 
 #
